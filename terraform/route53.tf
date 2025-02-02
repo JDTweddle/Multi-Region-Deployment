@@ -1,5 +1,5 @@
 resource "aws_route53_health_check" "failover_health_check" {
-  fqdn              = "app.amesmicah.com"
+  fqdn              = "your-domain"
   port              = 80
   type              = "HTTP"
   resource_path     = "/"
@@ -11,8 +11,8 @@ output "health_check_id" {
 }
 
 resource "aws_route53_record" "failover_record" {
-  zone_id = "Z0430095YYXRFRIK2GR"
-  name    = "app.amesmicah.com"
+  zone_id = "****************"
+  name    = "your-domain"
   type    = "A"
   set_identifier = "primary"
   failover_routing_policy {
@@ -24,8 +24,8 @@ resource "aws_route53_record" "failover_record" {
 }
 
 resource "aws_route53_record" "failover_record_secondary" {
-  zone_id = "Z0430095YYXRFRIK2GR"
-  name    = "app.amesmicah.com"
+  zone_id = "*****************"
+  name    = "your-domain"
   type    = "A"
   set_identifier = "secondary"
   failover_routing_policy {
